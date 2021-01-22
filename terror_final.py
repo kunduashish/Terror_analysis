@@ -4,7 +4,6 @@
 #importing the libraries
 import pandas as pd
 import webbrowser
-# !pip install dash
 import dash
 import dash_html_components as html
 from dash.dependencies import Input, Output 
@@ -15,7 +14,7 @@ from dash.exceptions import PreventUpdate
 
 
 # Declaring Global variables
-# A variable declared outside a function is a global variable by default.
+
 app = dash.Dash()
 project_name = None
 
@@ -91,7 +90,7 @@ def open_browser():
     webbrowser.open_new('http://127.0.0.1:8050/')
 
 
-# Layout of your page
+# Layout of my page
 def create_app_ui():
     # Create the UI of the Webpage here
     main_layout = html.Div([
@@ -195,7 +194,7 @@ def create_app_ui():
     return main_layout
 
 
-# Callback of your page
+# Callback of my page
 @app.callback(
     Output('graph-object', 'figure'),
     [
@@ -282,7 +281,7 @@ def update_app_ui(Tabs, month_value, date_value,region_value,country_value,state
             new_df = new_df[new_df["attacktype1_txt"].isin(attack_value)] 
         
         
-         # You should always set the figure for blank, since this callback 
+         # should always set the figure for blank, since this callback 
          # is called once when it is drawing for first time        
         mapFigure = go.Figure()
         if new_df.shape[0]:
@@ -418,7 +417,7 @@ def set_city_options(state_value):
     return [{'label':m , 'value':m} for m in option]
 
 
-# Main Function to control the Flow of your Project
+# Main Function to control the Flow of Project
 def main():
     load_data()
     
@@ -428,8 +427,7 @@ def main():
     
     global app
     app.layout = create_app_ui()
-    app.title = project_name
-    # go to https://www.favicon.cc/ and download the ico file and store in assets directory 
+    app.title = project_name 
     app.run_server() # debug=True
   
     print("This would be executed only after the script is closed")
